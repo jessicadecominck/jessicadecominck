@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Jessica DECOMINCK | Portfolio Professionnel</title>
+    <!-- Chargement de la police d'écriture épurée -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CHARTE GRAPHIQUE & CONFIGURATION GENERALE --- */
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8F9FA;
+            --text-main: #2C3E50;
+            --text-muted: #7F8C8D;
+            --accent-girly: #F3D1CD; /* Rose poudré léger */
+            --accent-girly-dark: #E8A7A1;
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- BARRE DE NAVIGATION (HEADER) --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-girly-dark);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-girly-dark);
+            border-bottom: 2px solid var(--accent-girly);
+        }
+
+        /* --- STYLES DES SECTIONS --- */
+        section {
+            padding: 100px 20px 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-girly);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* --- ACCUEIL / HERO SECTION --- */
+        #accueil {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            min-height: 90vh;
+            padding-top: 140px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+            text-align: justify;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-girly);
+            color: var(--text-main);
+            box-shadow: 0 4px 10px rgba(243, 209, 205, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-girly-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-girly-dark);
+            background-color: var(--bg-secondary);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 0 0 260px;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            border: 5px solid var(--accent-girly);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- MON PARCOURS (CV) --- */
+        .cv-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .cv-block-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid var(--accent-girly-dark);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-girly-dark);
+            border: 2px solid white;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--accent-girly-dark);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .company {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .timeline-item ul {
+            list-style-type: square;
+            padding-left: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* --- COMPETENCES --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background-color: var(--bg-secondary);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-girly);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            color: var(--accent-girly-dark);
+        }
+
+        .skill-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- ACCORDEONS DOSSIER PROFESSIONNEL (DP) --- */
+        .dp-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .activity-section {
+            margin-bottom: 25px;
+        }
+
+        .activity-header {
+            background-color: var(--bg-secondary);
+            padding: 15px 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .accordion-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            background-color: var(--bg-primary);
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .accordion-trigger:hover {
+            background-color: rgba(243, 209, 205, 0.1);
+        }
+
+        .accordion-trigger::after {
+            content: '▼';
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        .accordion-item.active .accordion-trigger::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #FAFAFA;
+        }
+
+        .accordion-inner {
+            padding: 25px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .dp-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-girly-dark);
+        }
+
+        /* --- MISE EN PAGE DES DETAILS & VISUELS DU DP --- */
+        .dp-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .dp-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dp-block {
+            margin-bottom: 15px;
+        }
+
+        .dp-block h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .dp-block p, .dp-block ul {
+            color: #4A5568;
+            text-align: justify;
+            font-size: 0.9rem;
+        }
+
+        .dp-block ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .dp-visual {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+            text-align: center;
+        }
+
+        .dp-visual img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid #edf2f7;
+            margin-bottom: 8px;
+        }
+
+        .dp-visual span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* --- CONTACT & COMPOSANTS DE FORMULAIRE --- */
+        .form-container {
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .form-input {
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: #FFFFFF;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-girly-dark);
+            box-shadow: 0 0 0 3px rgba(243, 209, 205, 0.25);
+        }
+
+        select.form-input {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C3E50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 14px;
+            padding-right: 40px;
+        }
+
+        textarea.form-input {
+            resize: none;
+            min-height: 120px;
+        }
+
+        #form-success {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        #form-success h4 {
+            font-size: 1.3rem;
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+
+        /* --- PIED DE PAGE --- */
+        footer {
+            background-color: #FAEDEB; /* Teinte très légère de rose */
+            padding: 60px 20px 20px 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3, .footer-contact h3, .footer-form-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-top: 20px;
+        }
+
+        /* --- RESPONSIVE DESIGNS --- */
+        @media (max-width: 768px) {
+            #accueil {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 100px;
+            }
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRE DE NAVIGATION -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Jessica<span>.D</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#parcours">Parcours</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#dossier-prof">Dossier Pro</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ACCUEIL / BANNIERE -->
+    <section id="accueil">
+        <div class="hero-text">
+            <h1>Jessica DECOMINCK</h1>
+            <h2>Assistante de Direction</h2>
+            <p>Forte de 5 ans d'expérience en secrétariat administratif, suite à ma formation au Titre Professionnel d'Assistante de Direction (Niveau 5), je mets ma polyvalence, ma rigueur et mon sens de l'anticipation au service de vos activités administratives et de la gestion de vos priorités.</p>
+            <div class="cta-buttons">
+                <a href="#dossier-prof" class="btn btn-primary">Consulter mon DP</a>
+                <a href="#contact" class="btn btn-secondary">Me contacter</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="photo.png" onerror="this.src='photo.jpg'; this.onerror=null;" alt="Jessica DECOMINCK">
+        </div>
+    </section>
+
+    <!-- MON PARCOURS (CV DIGITAL) -->
+    <section id="parcours" style="background-color: var(--bg-secondary); max-width: 100%;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 class="section-title">Mon Parcours</h2>
+            
+            <div class="cv-container">
+                <!-- COLONNE EXPÉRIENCES -->
+                <div>
+                    <h3 class="cv-block-title">Expériences Professionnelles</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="date">Janvier 2026 - Février 2026</div>
+                            <div class="job-title">Assistante de Direction (Immersion professionnelle)</div>
+                            <div class="company">Institut Notre Dame de la Sambre — Maubeuge</div>
+                            <ul>
+                                <li>Gestion et synchronisation multicritères des agendas</li>
+                                <li>Création et automatisation de tableaux de bord de suivi</li>
+                                <li>Gestion du flux des candidats : de l'inscription à la mise en place des épreuves</li>
+                                <li>Rédaction de notes de services et procédures internes</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="date">Avril 2025 - Juin 2025</div>
+                            <div class="job-title">Secrétaire Administrative</div>
+                            <div class="company">Institut Notre Dame de la Sambre — Maubeuge</div>
+                            <ul>
+                                <li>Accueil, traitement et orientation physique et téléphonique</li>
+                                <li>Coordination des flux d'inscriptions et mise à jour des bases de données élèves</li>
+                                <li>Prises de rendez-vous, tenue de l'agenda du Chef d'établissement</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="date">Octobre 2018 - Janvier 2024</div>
+                            <div class="job-title">Secrétaire Administrative (Collaborateur conjoint)</div>
+                            <div class="company">Pro G Menuiserie</div>
+                            <ul>
+                                <li>Gestion de la conformité fiscale</li>
+                                <li>Gestion du cycle de facturation</li>
+                                <li>Mise en place d'un système d'archivage physique et numérique</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLONNE FORMATIONS -->
+                <div>
+                    <h3 class="cv-block-title">Diplômes & Formations</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="date">2025 - 2026</div>
+                            <div class="job-title">Titre Professionnel - Assistante de Direction</div>
+                            <div class="company">ID Formation, Maubeuge (Niveau 5)</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="date">2009</div>
+                            <div class="job-title">BEP Métiers de l'Hygiène, Propreté & Environnement</div>
+                            <div class="company">Lycée Professionnel Placide Courtoy, Hautmont</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY COMPETENCES -->
+    <section id="competences">
+        <h2 class="section-title">Mes Compétences</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <span class="skill-icon">📊</span>
+                <h3>Bureautique & Données</h3>
+                <p>Maîtrise d'Excel (formules complexes, TCD), Outlook, automatisation et outils de pilotage chiffrés.</p>
+            </div>
+            <div class="skill-card">
+                <span class="skill-icon">📁</span>
+                <h3>Gestion Administrative</h3>
+                <p>Traitement des dossiers complexes, courriers officiels, gestion de facturation et conformité fiscale.</p>
+            </div>
+            <div class="skill-card">
+                <span class="skill-icon">📅</span>
+                <h3>Support Organisationnel</h3>
+                <p>Synchronisation d'agendas multicritères, accueil physique et téléphonique, logistique interne.</p>
+            </div>
+            <div class="skill-card">
+                <span class="skill-icon">🎯</span>
+                <h3>Gestion de Projets</h3>
+                <p>Planification (PERT), gestion budgétaire, coordination d'événements et élaboration de bilans.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOSSIER PROFESSIONNEL -->
+    <section id="dossier-prof">
+        <h2 class="section-title">Dossier Professionnel (DP)</h2>
+        <p class="dp-intro">Découvrez mes fiches de compétences approfondies, enrichies de détails méthodologiques et de visuels concrets issus de mes productions.</p>
+
+        <!-- ACTIVITE TYPE 1 -->
+        <div class="activity-section">
+            <div class="activity-header">Activité-Type 1 : Assurer les fonctions de support administratif et organisationnel à l’équipe de direction</div>
+            
+            <div class="accordion-item">
+                <button class="accordion-trigger">Exemple 1 : Conception d'outils de pilotage et gestion chiffrée</button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="dp-meta">
+                            <span>📍 Lieu : Institution Notre Dame de la Sambre</span>
+                            <span>⏱ Période : 12/01/2026 au 06/02/2026</span>
+                        </div>
+                        
+                        <div class="dp-layout">
+                            <div>
+                                <div class="dp-block">
+                                    <h4>Description détaillée de la mission :</h4>
+                                    <p>Conception d'un outil d'analyse automatisé sous Excel pour suivre les absences du corps enseignant et fluidifier la transmission des justificatifs réglementaires vers le Rectorat. L'objectif était d'offrir une visibilité immédiate sur les heures dues et récupérées.</p>
+                                </div>
+                                <div class="dp-block">
+                                    <h4>Méthodologie & Formules appliquées :</h4>
+                                    <ul>
+                                        <li>Mise en œuvre de fonctions logiques imbriquées (<code>=SI</code>) pour automatiser le décompte des heures de carence ou de récupération.</li>
+                                        <li>Construction de Tableaux Croisés Dynamiques (TCD) mensuels regroupant les motifs majeurs d'absence.</li>
+                                        <li>Génération de graphiques dynamiques pour assister les arbitrages organisationnels de la direction.</li>
+                                    </ul>
+                                </div>
+                                <div class="dp-block">
+                                    <h4>Résultats obtenus :</h4>
+                                    <p>Réduction significative du temps de saisie hebdomadaire et suppression des erreurs de calcul manuel sur les volumes d'heures à rattraper.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="dp-visual">
+                                <img src="excel-absences.png" onerror="this.src='excel-absences.jpg'; this.onerror=null;" alt="Aperçu du Tableau de bord Excel">
+                                <span>Aperçu de l'outil de pilotage Excel & TCD d'absences</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-trigger">Exemple 2 : Optimisation des processus et gestion de l'information</button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="dp-meta">
+                            <span>📍 Lieu : Institution Notre Dame de la Sambre</span>
+                            <span>⏱ Période : 12/01/2026 au 06/02/2026</span>
+                        </div>
+                        <div class="dp-block">
+                            <h4>Description de la mission & Méthode :</h4>
+                            <p>Face à la dispersion des contacts administratifs manuscrits, j'ai pris l'initiative de migrer et structurer l'intégralité des répertoires vers une base de données numérique propre, indexée et facilement requêtable par les équipes logistiques.</p>
+                        </div>
+                        <div class="dp-block">
+                            <h4>Sécurisation, Règles AFNOR & RGPD :</h4>
+                            <p>Application stricte des règles de tri alphabétique et de lisibilité. Afin de garantir le Plan de Continuité d'Activité (PCA) en cas de panne réseau, une version physique optimisée (en-têtes fixes, pagination automatique) a été imprimée et classée de manière sécurisée sous armoire verrouillée.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-trigger">Exemple 3 : Organisation et suivi opérationnel des activités</button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="dp-meta">
+                            <span>📍 Lieu : Institution Notre Dame de la Sambre</span>
+                            <span>⏱ Période : 12/01/2026 au 06/02/2026</span>
+                        </div>
+                        
+                        <div class="dp-layout">
+                            <div>
+                                <div class="dp-block">
+                                    <h4>Gestion stratégique de l'agenda :</h4>
+                                    <p>Coordination des calendriers partagés complexes de l'équipe de direction. Intégration rigoureuse des jalons institutionnels majeurs (conseils d'administration, examens blancs, conseils de classe) et d'événements à haute valeur protocolaire comme la visite officielle de Monseigneur DOLLMAN.</p>
+                                </div>
+                                <div class="dp-block">
+                                    <h4>Techniques d'organisation appliquées :</h4>
+                                    <ul>
+                                        <li>Mise en place d'une charte de codes couleurs sur Outlook par entité/niveau.</li>
+                                        <li>Création de rappels logistiques échelonnés (J-7 / J-1) associés aux réservations de salles de réunion.</li>
+                                        <li>Gestion stricte des plages de confidentialité.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="dp-visual">
+                                <img src="outlook-agenda.png" onerror="this.src='outlook-agenda.jpg'; this.onerror=null;" alt="Planification d'agenda sur Outlook">
+                                <span>Exemple de structuration d'agenda sur Outlook partagé</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVITE TYPE 2 -->
+        <div class="activity-section">
+            <div class="activity-header">Activité-Type 2 : Organiser et suivre les projets et dossiers spécifiques de l’équipe de direction</div>
+            
+            <div class="accordion-item">
+                <button class="accordion-trigger">Exemple 1 : Organisation d’une journée portes ouvertes (JPO)</button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <div class="dp-meta">
+                            <span>📍 Lieu : Centre ID Formation</span>
+                            <span>⏱ Période : 17/10/2025 au 23/12/2025</span>
+                        </div>
+                        
+                        <div class="dp-layout">
+                            <div>
+                                <div class="dp-block">
+                                    <h4>Cadrage de projet & Planification :</h4>
+                                    <p>Pilotage global d'un projet événementiel d'envergure étalé sur un cycle srtict de 9 semaines. Utilisation des outils de planification avancés, notamment la modélisation d'un diagramme de PERT afin de déterminer le chemin critique et d'anticiper les goulots d'étranglement logistiques.</p>
+                                </div>
+                                <div class="dp-block">
+                                    <h4>Gestion budgétaire & Communication :</h4>
+                                    <p>Élaboration du budget prévisionnel et soutenance orale des lignes de coûts auprès du Directeur de centre pour validation des enveloppes. En parallèle, conception de la charte visuelle de l'événement et réalisation d'un support de communication animé sous CANVA diffusé sur l'écran d'accueil du pôle.</p>
+                                </div>
+                                <div class="dp-block">
+                                    <h4>Livrables & Démarche Qualité :</h4>
+                                    <p>Coordination le jour J (gestion des flux, émargements conformes à la Loi Plein Emploi). Rédaction finale d'un bilan de projet détaillé comprenant l'analyse statistique des questionnaires de satisfaction des visiteurs et la formulation de préconisations techniques pour les futures sessions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACT -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Jessica DECOMINCK</h3>
+                <p>En recherche active d'opportunités au poste d'Assistante de direction ou Assistante administrative. Organisée, force de proposition et rigoureuse.</p>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Coordonnées</h3>
+                <p>📍 82 rue de la Fontaine, 59330 HAUTMONT</p>
+                <p>📞 07 77 76 69 99</p>
+                <p>✉️ jessicadecominck@gmail.com</p>
+                <p>🚗 Permis B & Véhiculée</p>
+            </div>
+
+            <!-- FORMULAIRE INTEGRÉ AVEC LISTE DEROULANTE POUR L'OBJET -->
+            <div class="footer-form-wrapper">
+                <h3 class="footer-form-title">Me laisser un message</h3>
+                <div class="form-container">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="0d256554-4832-476f-af41-b31ec8e4ce86">
+                        
+                        <div class="form-group">
+                            <label for="name">Prénom & Nom</label>
+                            <input type="text" id="name" name="name" required class="form-input" placeholder="Votre nom complet">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Adresse Email</label>
+                            <input type="email" id="email" name="email" required class="form-input" placeholder="adresse@exemple.fr">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Objet de votre message</label>
+                            <select id="subject" name="subject" required class="form-input">
+                                <option value="" disabled selected>Choisir un sujet...</option>
+                                <option value="Proposition d'emploi / Recrutement">Opportunité d'embauche / Recrutement</option>
+                                <option value="Mission d'assistance / Prestation">Mission d'assistance administrative</option>
+                                <option value="Demande d'informations complémentaires">Demande d'informations</option>
+                                <option value="Autre motif">Autre demande</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required class="form-input" placeholder="Votre message..."></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; border-radius: 8px;">
+                            Envoyer
+                        </button>
+                    </form>
+
+                    <div id="form-success" style="display: none;">
+                        <h4>Message reçu !</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Merci pour votre démarche, je reviens vers vous rapidement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BLOC COPYRIGHT MODIFIÉ POUR LE RESPECT DU RGPD -->
+        <div class="copyright">
+            <p>&copy; 2026 — Portfolio Professionnel Jessica DECOMINCK. Fait à HAUTMONT.</p>
+            <p style="margin-top: 8px;">
+                <a href="politique-confidentialite.html" target="_blank" style="text-decoration: underline; font-size: 0.8rem; color: var(--text-muted); transition: color 0.3s;" onmouseover="this.style.color='#E8A7A1'" onmouseout="this.style.color='var(--text-muted)'">
+                    Politique de confidentialité (RGPD)
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- LOGIQUE JAVASCRIPT -->
+    <script>
+        // Logique pour les accordéons du DP
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.parentElement;
+                const content = trigger.nextElementSibling;
+                
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = null;
+                    item.classList.remove('active');
+                } else {
+                    const siblingItems = item.parentElement.querySelectorAll('.accordion-item');
+                    siblingItems.forEach(sibling => {
+                        sibling.classList.remove('active');
+                        if(sibling.querySelector('.accordion-content')) {
+                            sibling.querySelector('.accordion-content').style.maxHeight = null;
+                        }
+                    });
+
+                    item.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Logique asynchrone pour le formulaire de contact Web3Forms
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submit-btn');
+            const successMsg = document.getElementById('form-success');
+            
+            btn.disabled = true;
+            btn.innerText = "Envoi en cours...";
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let resJson = await response.json();
+                if (response.status == 200) {
+                    form.reset();
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                } else {
+                    alert(resJson.message || "Une erreur technique s'est produite lors de l'envoi.");
+                    btn.disabled = false;
+                    btn.innerText = "Envoyer";
+                }
+            })
+            .catch(error => {
+                alert("Erreur de réseau. Veuillez vérifier votre connexion internet.");
+                btn.disabled = false;
+                btn.innerText = "Envoyer";
+            });
+        });
+    </script>
+</body>
+</html>
