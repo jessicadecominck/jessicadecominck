@@ -14,7 +14,7 @@
             --bg-secondary: #F8F9FA;
             --text-main: #2C3E50;
             --text-muted: #7F8C8D;
-            --accent-girly: #F3D1CD; /* Rose poudré léger */
+            --accent-girly: #F3D1CD;
             --accent-girly-dark: #E8A7A1;
             --border-color: #E2E8F0;
         }
@@ -328,6 +328,61 @@
             color: var(--text-muted);
         }
 
+        /* --- RÉALISATIONS --- */
+        .realisations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .realisation-card {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .realisation-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-girly);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+        .realisation-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .realisation-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+        .realisation-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: justify;
+            flex-grow: 1;
+            margin-bottom: 25px;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .skill-tag {
+            background-color: rgba(243, 209, 205, 0.15);
+            color: #B86B63;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid rgba(232, 167, 161, 0.4);
+        }
+
         /* --- ACCORDEONS DOSSIER PROFESSIONNEL (DP) --- */
         .dp-intro {
             text-align: center;
@@ -539,7 +594,7 @@
 
         /* --- PIED DE PAGE --- */
         footer {
-            background-color: #FAEDEB; /* Teinte très légère de rose */
+            background-color: #FAEDEB;
             padding: 60px 20px 20px 20px;
             border-top: 1px solid var(--border-color);
         }
@@ -573,28 +628,34 @@
             padding-top: 20px;
         }
 
-        /* --- CODE RESPONSIVE SOUVENT UTILISÉ (MOBILE & IPHONE SE) --- */
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             #accueil {
                 flex-direction: column-reverse;
                 text-align: center;
-                padding-top: 110px; /* Réduit car l'en-tête reste sur une seule ligne */
+                padding-top: 110px;
             }
+
             .cv-container {
                 grid-template-columns: 1fr;
             }
+
             .nav-container {
-                flex-direction: row; /* Aligné sur une seule ligne horizontale */
+                flex-direction: row;
                 justify-content: space-between;
-                padding: 15px 20px;
+                padding: 15px 10px; /* Padding réduit pour rapprocher du bord */
             }
             
-            /* Activation et style du bouton Burger */
+            /* BOUTON BURGER CORRIGÉ */
             .burger-toggle {
                 display: flex;
+                order: 3; /* Force la position tout à droite */
             }
             
-            /* Passage du menu classique à un menu déroulant mobile */
+            nav {
+                order: 2; /* S'assure que la balise nav ne gêne pas */
+            }
+            
             nav ul {
                 display: none;
                 position: absolute;
@@ -609,7 +670,6 @@
                 box-shadow: 0 10px 15px rgba(0,0,0,0.05);
             }
             
-            /* Affichage du menu lorsqu'il possède la classe .active */
             nav ul.active {
                 display: flex;
             }
@@ -633,7 +693,6 @@
                 border-bottom: none;
             }
             
-            /* Animation de transformation du bouton burger en croix (X) */
             .burger-toggle.active span:nth-child(1) {
                 transform: translateY(8px) rotate(45deg);
                 background-color: var(--accent-girly-dark);
@@ -651,7 +710,6 @@
             }
         }
 
-        /* Optimisations fines iPhone SE (Écrans très étroits) */
         @media (max-width: 375px) {
             #accueil {
                 padding-top: 105px;
@@ -664,12 +722,10 @@
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION (HEADER) -->
     <header>
         <div class="nav-container">
             <div class="logo">Jessica<span>.D</span></div>
             
-            <!-- Bouton déclencheur pour le menu mobile -->
             <button class="burger-toggle" id="burger-btn" aria-label="Ouvrir le menu">
                 <span></span>
                 <span></span>
@@ -681,6 +737,7 @@
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#parcours">Parcours</a></li>
                     <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#realisations">Réalisations</a></li>
                     <li><a href="#dossier-prof">Dossier Pro</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -688,7 +745,6 @@
         </div>
     </header>
 
-    <!-- ACCUEIL / BANNIERE -->
     <section id="accueil">
         <div class="hero-text">
             <h1>Jessica DECOMINCK</h1>
@@ -704,13 +760,11 @@
         </div>
     </section>
 
-    <!-- MON PARCOURS (CV DIGITAL) -->
     <section id="parcours" style="background-color: var(--bg-secondary); max-width: 100%;">
         <div style="max-width: 1100px; margin: 0 auto;">
             <h2 class="section-title">Mon Parcours</h2>
             
             <div class="cv-container">
-                <!-- COLONNE EXPÉRIENCES -->
                 <div>
                     <h3 class="cv-block-title">Expériences Professionnelles</h3>
                     <div class="timeline">
@@ -748,7 +802,6 @@
                     </div>
                 </div>
 
-                <!-- COLONNE FORMATIONS -->
                 <div>
                     <h3 class="cv-block-title">Diplômes & Formations</h3>
                     <div class="timeline">
@@ -768,7 +821,6 @@
         </div>
     </section>
 
-    <!-- KEY COMPETENCES -->
     <section id="competences">
         <h2 class="section-title">Mes Compétences</h2>
         <div class="skills-grid">
@@ -795,12 +847,10 @@
         </div>
     </section>
 
-    <!-- DOSSIER PROFESSIONNEL -->
     <section id="dossier-prof">
         <h2 class="section-title">Dossier Professionnel (DP)</h2>
         <p class="dp-intro">Découvrez mes fiches de compétences approfondies, enrichies de détails méthodologiques et de visuels concrets issus de mes productions.</p>
 
-        <!-- ACTIVITE TYPE 1 -->
         <div class="activity-section">
             <div class="activity-header">Activité-Type 1 : Assurer les fonctions de support administratif et organisationnel à l’équipe de direction</div>
             
@@ -897,7 +947,6 @@
             </div>
         </div>
 
-        <!-- ACTIVITE TYPE 2 -->
         <div class="activity-section">
             <div class="activity-header">Activité-Type 2 : Organiser et suivre les projets et dossiers spécifiques de l’équipe de direction</div>
             
@@ -932,7 +981,47 @@
         </div>
     </section>
 
-    <!-- FOOTER / CONTACT -->
+    <section id="realisations" style="background-color: var(--bg-secondary); max-width: 100%;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 class="section-title">Mes Réalisations</h2>
+            
+            <div class="realisations-grid">
+                <div class="realisation-card">
+                    <div class="realisation-icon">📊</div>
+                    <h3>Création de Tableaux de Bord Automatisés</h3>
+                    <p>Développement de fichiers Excel avec fonctions complexes et tableaux croisés dynamiques pour le suivi des absences et du budget. Réduction significative du temps de traitement administratif.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Excel Avancé</span>
+                        <span class="skill-tag">Logique de calcul</span>
+                        <span class="skill-tag">Automatisation</span>
+                    </div>
+                </div>
+
+                <div class="realisation-card">
+                    <div class="realisation-icon">🎪</div>
+                    <h3>Organisation des Journées Portes Ouvertes</h3>
+                    <p>Gestion complète de l'événement : création du rétroplanning (PERT), suivi budgétaire, coordination des différents acteurs et pilotage le jour de l'événement.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Planification PERT</span>
+                        <span class="skill-tag">Gestion budgétaire</span>
+                        <span class="skill-tag">Logistique événementielle</span>
+                    </div>
+                </div>
+
+                <div class="realisation-card">
+                    <div class="realisation-icon">🗂️</div>
+                    <h3>Dématérialisation et Refonte de l'Archivage</h3>
+                    <p>Migration de l'ensemble des dossiers administratifs physiques vers une base de données numérique structurée, indexée et sécurisée.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Conformité RGPD</span>
+                        <span class="skill-tag">Méthodologie de tri</span>
+                        <span class="skill-tag">Outils Numériques</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-about">
@@ -948,7 +1037,6 @@
                 <p>🚗 Permis B & Véhiculée</p>
             </div>
 
-            <!-- FORMULAIRE INTEGRÉ -->
             <div class="footer-form-wrapper">
                 <h3 class="footer-form-title">Me laisser un message</h3>
                 <div class="form-container">
@@ -994,7 +1082,6 @@
             </div>
         </div>
         
-        <!-- BLOC COPYRIGHT AVEC LIEN RGPD -->
         <div class="copyright">
             <p>&copy; 2026 — Portfolio Professionnel Jessica DECOMINCK. Fait à HAUTMONT.</p>
             <p style="margin-top: 8px;">
@@ -1005,9 +1092,7 @@
         </div>
     </footer>
 
-    <!-- LOGIQUE JAVASCRIPT -->
     <script>
-        // Logique pour le fonctionnement du Menu Burger Mobile
         const burgerBtn = document.getElementById('burger-btn');
         const navMenu = document.getElementById('nav-menu');
 
@@ -1016,7 +1101,6 @@
             navMenu.classList.toggle('active');
         });
 
-        // Fermeture automatique du menu au clic sur un lien d'ancrage
         document.querySelectorAll('#nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 burgerBtn.classList.remove('active');
@@ -1024,7 +1108,6 @@
             });
         });
 
-        // Logique pour les accordéons du DP
         document.querySelectorAll('.accordion-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.parentElement;
@@ -1048,7 +1131,6 @@
             });
         });
 
-        // Logique asynchrone pour le formulaire de contact Web3Forms
         const form = document.getElementById('contact-form');
         form.addEventListener('submit', function(e) {
             e.preventDefault();
